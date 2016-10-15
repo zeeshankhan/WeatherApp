@@ -33,7 +33,6 @@ struct WeatherInfo {
         urlComponents.queryItems = [
             URLQueryItem(name: "key", value: "vzkjnx2j5f88vyn5dhvvqkzc"),
             URLQueryItem(name: "q", value: city),
-            URLQueryItem(name: "fx", value: "yes"),
             URLQueryItem(name: "format", value: "json")
         ]
 
