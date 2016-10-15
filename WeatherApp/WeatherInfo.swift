@@ -9,12 +9,43 @@
 import Foundation
 import UIKit
 
-/*
- i) Icon Showing Current Weather and City Name
- ii) Observation Time
- iii) humidity
- iv) weather description
- */
+enum WeatherItem : Int {
+
+    case icon
+    case observationTime
+    case city
+    case humidity
+    case weatherDescription
+
+    var description : String {
+        get {
+            switch(self) {
+            case .icon: return "Icon"
+            case .city: return "City"
+            case .observationTime: return "Observation Time"
+            case .humidity: return "Humidity"
+            case .weatherDescription: return "Weather Description"
+            }
+        }
+    }
+
+    func itemValue(_ info: WeatherInfo) -> String {
+        switch(self) {
+        case .icon: return info.iconUrl
+        case .city: return info.city
+        case .observationTime: return info.observationTime
+        case .humidity: return info.humidity
+        case .weatherDescription: return info.weatherDesc
+        }
+    }
+
+    static let count: Int = {
+        var max: Int = 0
+        while let _ = WeatherItem(rawValue: max) { max += 1 }
+        return max
+    }()
+}
+
 
 struct WeatherInfo {
 
