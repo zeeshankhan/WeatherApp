@@ -14,6 +14,12 @@
 		B33381811DB1121F00D42EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33381801DB1121F00D42EE1 /* Assets.xcassets */; };
 		B33381841DB1121F00D42EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */; };
 		B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333818E1DB1121F00D42EE1 /* WeatherAppTests.swift */; };
+		B333819A1DB1146700D42EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381991DB1146700D42EE1 /* DetailsViewController.swift */; };
+		B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381991DB1146700D42EE1 /* DetailsViewController.swift */; };
+		B333819D1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */; };
+		B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */; };
+		B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
+		B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,9 @@
 		B333818A1DB1121F00D42EE1 /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B333818E1DB1121F00D42EE1 /* WeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppTests.swift; sourceTree = "<group>"; };
 		B33381901DB1121F00D42EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B33381991DB1146700D42EE1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		B333819F1DB1220000D42EE1 /* WeatherInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +90,10 @@
 			children = (
 				B33381761DB1121F00D42EE1 /* AppDelegate.swift */,
 				B33381781DB1121F00D42EE1 /* ViewController.swift */,
+				B33381991DB1146700D42EE1 /* DetailsViewController.swift */,
 				B333817A1DB1121F00D42EE1 /* Main.storyboard */,
+				B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */,
+				B333819F1DB1220000D42EE1 /* WeatherInfo.swift */,
 				B33381801DB1121F00D42EE1 /* Assets.xcassets */,
 				B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */,
 				B33381851DB1121F00D42EE1 /* Info.plist */,
@@ -206,7 +218,10 @@
 			files = (
 				B333817F1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld in Sources */,
 				B33381791DB1121F00D42EE1 /* ViewController.swift in Sources */,
+				B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
+				B333819D1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 				B33381771DB1121F00D42EE1 /* AppDelegate.swift in Sources */,
+				B333819A1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
 				B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */,
+				B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
+				B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

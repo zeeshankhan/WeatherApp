@@ -32,5 +32,12 @@ class WeatherAppTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
+    func testEnumCountIsEqualToNumberOfItemsInEnum() {
+
+        var max: Int = 0
+        while let _ = CellType(rawValue: max) { max += 1 }
+
+        XCTAssert(max == CellType.count)
+    }
 }
