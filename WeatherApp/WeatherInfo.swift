@@ -89,19 +89,31 @@ struct WeatherInfo {
     
     private static func weatherInfo(fromJsonData jsonData: Data?) -> WeatherInfo? {
 
-        // get JSON
+        // get JSON data
         guard let jsonData = jsonData,
             let json = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers),
-            let jsonItems = json as? Dictionary<String, Any> else {
+            let jsonItems = json as? Dictionary<String, Any>,
+            let data = jsonItems["data"] as? Dictionary<String, Any>
+            else {
                 return nil
         }
 
 
         // get currentCondition
-        guard let data = jsonItems["data"] as? Dictionary<String, Any>,
-            let currentCondition = data["current_condition"] as? Array<Any>,
+        guard let currentCondition = data["current_condition"] as? Array<Any>,
             let info = currentCondition.first as? Dictionary<String, Any>
-            else { return nil }
+            else {
+
+                guard let error = data["error"] as? Array<Any>,
+                    let msgs = error.first as? Dictionary<String, Any>,
+                    let msg = msgs["msg"] as? String
+                    else {
+                        return nil
+                }
+
+                print(msg)
+                return nil
+        }
 
 
         // get info

@@ -20,6 +20,8 @@
 		B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */; };
 		B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
 		B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
+		B33E7A921DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
+		B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		B33381991DB1146700D42EE1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		B333819F1DB1220000D42EE1 /* WeatherInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
+		B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 				B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */,
 				B33381851DB1121F00D42EE1 /* Info.plist */,
 				B333817D1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld */,
+				B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -222,6 +226,7 @@
 				B333819D1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 				B33381771DB1121F00D42EE1 /* AppDelegate.swift in Sources */,
 				B333819A1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
+				B33E7A921DB2A3EE00A8A50D /* HistoryStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +236,7 @@
 			files = (
 				B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
 				B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */,
+				B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */,
 				B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
 				B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 			);

@@ -58,7 +58,6 @@ class DetailsViewController: UIViewController {
             return
         }
 
-//        let city = "Alabama"
         WeatherInfo.fetchWeather(forCity: city) { [weak self] (weather) in
             self?.info = weather
             self?.detailsTableView.reloadData()

@@ -96,7 +96,7 @@
                                             <frame key="frameInset" width="375" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rrn-jZ-2Kz">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Rrn-jZ-2Kz">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64" id="Dd8-Pf-9bV"/>
@@ -202,4 +202,7 @@
             <point key="canvasLocation" x="-111.2" y="142.57871064467767"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="32" height="32"/>
+    </resources>
 </document>
