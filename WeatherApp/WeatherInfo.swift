@@ -32,7 +32,7 @@ enum WeatherItem : Int {
     func itemValue(_ info: WeatherInfo) -> String {
         switch(self) {
         case .icon: return info.iconUrl
-        case .city: return info.city
+        case .city: return info.city.capitalized
         case .observationTime: return info.observationTime
         case .humidity: return info.humidity
         case .weatherDescription: return info.weatherDesc

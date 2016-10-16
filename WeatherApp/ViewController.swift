@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Weather App"
         listTableView.tableFooterView = UIView(frame: .zero)
+        listTableView.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,10 +64,35 @@ extension ViewController : UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+
+        listTableView.isHidden = false
+        listTableView.alpha = 0.0
+
+        UIView.animate(withDuration: 0.5) {
+            self.listTableView.alpha = 1.0
+        }
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+
+        listTableView.isHidden = false
+        listTableView.alpha = 1.0
+
+        UIView.animate(withDuration: 0.5) {
+            self.listTableView.alpha = 0.0
+        }
+
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {}
 }
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Recent Items"
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return history.getAll().count;
