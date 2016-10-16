@@ -136,8 +136,6 @@ struct WeatherInfo {
         }
 
 
-
-
         // get currentCondition
         guard let currentCondition = data["current_condition"] as? Array<Any>,
             let info = currentCondition.first as? Dictionary<String, Any>

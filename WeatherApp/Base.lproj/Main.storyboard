@@ -30,7 +30,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ZBS-x4-0ky"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9SY-6S-PAu">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9SY-6S-PAu">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="eNH-Qv-3DK" style="IBUITableViewCellStyleDefault" id="e4W-Vj-Cw1">
@@ -56,21 +56,37 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="jvR-gt-ZkD"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait. Loading... " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRD-J8-OB8">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4h5-Tf-dAM">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PRD-J8-OB8" firstAttribute="leading" secondItem="4h5-Tf-dAM" secondAttribute="trailing" constant="5" id="Hrf-w2-CP0"/>
                             <constraint firstAttribute="trailing" secondItem="Pew-M2-TXA" secondAttribute="trailing" id="JBn-JW-aFR"/>
+                            <constraint firstItem="PRD-J8-OB8" firstAttribute="top" secondItem="Pew-M2-TXA" secondAttribute="bottom" constant="9" id="QiV-Z9-H16"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9SY-6S-PAu" secondAttribute="bottom" id="ShO-uB-gFK"/>
                             <constraint firstItem="Pew-M2-TXA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vts-8A-Tbw"/>
-                            <constraint firstItem="9SY-6S-PAu" firstAttribute="top" secondItem="Pew-M2-TXA" secondAttribute="bottom" constant="20" id="Xsp-AM-jfc"/>
+                            <constraint firstItem="9SY-6S-PAu" firstAttribute="top" secondItem="Pew-M2-TXA" secondAttribute="bottom" constant="35" id="Xsp-AM-jfc"/>
                             <constraint firstAttribute="trailing" secondItem="9SY-6S-PAu" secondAttribute="trailing" id="c8e-ov-Ksb"/>
                             <constraint firstItem="9SY-6S-PAu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fTl-ov-wt0"/>
                             <constraint firstItem="Pew-M2-TXA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="odN-YN-fZy"/>
+                            <constraint firstItem="PRD-J8-OB8" firstAttribute="centerX" secondItem="Pew-M2-TXA" secondAttribute="centerX" id="pnr-TL-u56"/>
+                            <constraint firstItem="4h5-Tf-dAM" firstAttribute="centerY" secondItem="PRD-J8-OB8" secondAttribute="centerY" id="rAO-UN-Wmp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9vw-XW-TIZ"/>
                     <connections>
+                        <outlet property="indicator" destination="4h5-Tf-dAM" id="1yz-gH-VDc"/>
                         <outlet property="listTableView" destination="9SY-6S-PAu" id="9qg-15-CVh"/>
+                        <outlet property="msgLabel" destination="PRD-J8-OB8" id="Pxh-Yq-HSn"/>
                         <outlet property="searchBar" destination="Pew-M2-TXA" id="PPN-da-NxO"/>
                     </connections>
                 </viewController>
@@ -100,14 +116,14 @@
                                             <frame key="frameInset" width="375" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Rrn-jZ-2Kz">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rrn-jZ-2Kz">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64" id="Dd8-Pf-9bV"/>
                                                         <constraint firstAttribute="width" constant="64" id="WvV-iG-Tkr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJu-tO-5JV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="eJu-tO-5JV">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -206,7 +222,4 @@
             <point key="canvasLocation" x="-111.2" y="142.57871064467767"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="placeholder" width="32" height="32"/>
-    </resources>
 </document>

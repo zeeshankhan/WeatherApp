@@ -11,15 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     let history = History()
-    let hideRecentItems = false // As per 4A doc
+    let hideRecentItems = false
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var msgLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather App"
         listTableView.tableFooterView = UIView(frame: .zero)
         listTableView.isHidden = hideRecentItems
+        showHUD(false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,8 +37,11 @@ class ViewController: UIViewController {
     }
 
     func weather(forCity query: String) {
-
+        searchBar.resignFirstResponder()
+        showHUD(true);
         WeatherInfo.fetchWeather(forCity: query) { [weak self] (result) in
+
+           self?.showHUD(false);
 
             switch result {
 
@@ -44,33 +51,35 @@ class ViewController: UIViewController {
                     }
                     self?.showDetailsScreen(forWeatherInfo: info!)
 
-            case .failure(let err):
+                case .failure(let err):
 
-                switch err {
-                    case .notFound(let msg): break
-                        self?.showAler(message: msg)
-                    case .other(let msg):
-                        print(msg)
-                }
-
+                    switch err {
+                        case .notFound(let msg):
+                            self?.showAler(message: msg)
+                        case .other(let msg):
+                            print(msg)
+                    }
             }
         }
     }
 
     func showAler(message: String) {
 
-        let alertController = UIAlertController(title: "Weather App", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    func showHUD(_ shouldShow: Bool) {
+        msgLabel.isHidden = !shouldShow
+        indicator.isHidden = !shouldShow
     }
 }
 
 extension ViewController : UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-
         let city = searchBar.text?.trimmingCharacters(in: CharacterSet.whitespaces)
         guard (city?.characters.count)! > 0 else {
             showAler(message: "Please enter city name.")
@@ -129,7 +138,6 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchBar.resignFirstResponder()
         tableView.deselectRow(at: indexPath, animated: true)
         weather(forCity: history.getAll()[indexPath.row])
     }

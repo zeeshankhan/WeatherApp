@@ -51,22 +51,29 @@ class DetailsViewController: UIViewController {
     }
 
     func refreshDetails(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
 
-//        guard let city = info?.city else {
-//            return
-//        }
-//
-//        do {
-//            try WeatherInfo.fetchWeather(forCity: city, completion: { [weak self] (weather) in
-//                self?.info = weather
-//                self?.detailsTableView.reloadData()
-//            })
-//        }
-//        catch {
-//
-//        }
+        guard let city = info?.city else {
+            refreshControl.endRefreshing()
+            return
+        }
 
+        WeatherInfo.fetchWeather(forCity: city) { [weak self] (result) in
+
+            refreshControl.endRefreshing()
+            switch result {
+
+                case .success(let info):
+                    self?.info = info
+                    self?.detailsTableView.reloadData()
+                
+                case .failure(let err):
+                    switch err {
+                        case .other(let msg):
+                            print(msg)
+                        default: break
+                    }
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,7 +22,7 @@ class History {
             cities = [String]()
         }
 
-        if (cities?.count)! > 0 && cities?[0] == city {
+        if (cities?.count)! > 0 && (cities?.contains(city.lowercased()))! {
             return false
         }
 
@@ -30,7 +30,7 @@ class History {
             cities?.remove(at: cacheCount-1)
         }
 
-        cities?.insert(city, at: 0)
+        cities?.insert(city.lowercased(), at: 0)
         UserDefaults.standard.set(cities, forKey: key)
         return true
     }
