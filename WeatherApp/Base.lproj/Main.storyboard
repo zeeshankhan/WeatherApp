@@ -71,6 +71,7 @@
                     <navigationItem key="navigationItem" id="9vw-XW-TIZ"/>
                     <connections>
                         <outlet property="listTableView" destination="9SY-6S-PAu" id="9qg-15-CVh"/>
+                        <outlet property="searchBar" destination="Pew-M2-TXA" id="PPN-da-NxO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

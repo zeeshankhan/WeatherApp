@@ -11,13 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
     let history = History()
+    let hideRecentItems = false // As per 4A doc
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather App"
         listTableView.tableFooterView = UIView(frame: .zero)
-        listTableView.isHidden = true
+        listTableView.isHidden = hideRecentItems
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,18 +34,35 @@ class ViewController: UIViewController {
 
     func weather(forCity query: String) {
 
-        WeatherInfo.fetchWeather(forCity: query) { [weak self] (weatherInfo) in
+        WeatherInfo.fetchWeather(forCity: query) { [weak self] (result) in
 
-            guard let info = weatherInfo else {
-                // Show alert
-                return
-            }
+            switch result {
 
-            if (self?.history.add(query))! {
-                self?.listTableView.reloadData()
+                case .success(let info):
+                    if (self?.history.add(query))! {
+                        self?.listTableView.reloadData()
+                    }
+                    self?.showDetailsScreen(forWeatherInfo: info!)
+
+            case .failure(let err):
+
+                switch err {
+                    case .notFound(let msg): break
+                        self?.showAler(message: msg)
+                    case .other(let msg):
+                        print(msg)
+                }
+
             }
-            self?.showDetailsScreen(forWeatherInfo: info)
         }
+    }
+
+    func showAler(message: String) {
+
+        let alertController = UIAlertController(title: "Weather App", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -54,7 +73,7 @@ extension ViewController : UISearchBarDelegate {
 
         let city = searchBar.text?.trimmingCharacters(in: CharacterSet.whitespaces)
         guard (city?.characters.count)! > 0 else {
-            // Show alert
+            showAler(message: "Please enter city name.")
             return
         }
         weather(forCity: city!)
@@ -66,27 +85,32 @@ extension ViewController : UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 
-        listTableView.isHidden = false
-        listTableView.alpha = 0.0
+        if history.getAll().count > 0 && hideRecentItems {
+            listTableView.isHidden = false
+            listTableView.alpha = 0.0
 
-        UIView.animate(withDuration: 0.5) {
-            self.listTableView.alpha = 1.0
+            UIView.animate(withDuration: 0.5) {
+                self.listTableView.alpha = 1.0
+            }
         }
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
 
-        listTableView.isHidden = false
-        listTableView.alpha = 1.0
+        if hideRecentItems {
+            listTableView.isHidden = false
+            listTableView.alpha = 1.0
 
-        UIView.animate(withDuration: 0.5) {
-            self.listTableView.alpha = 0.0
+            UIView.animate(withDuration: 0.5) {
+                self.listTableView.alpha = 0.0
+            }
         }
 
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {}
 }
+
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate {
 
@@ -105,6 +129,8 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.resignFirstResponder()
+        tableView.deselectRow(at: indexPath, animated: true)
         weather(forCity: history.getAll()[indexPath.row])
     }
 }

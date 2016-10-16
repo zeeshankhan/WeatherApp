@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+enum Result<T, E> {
+    case success(T)
+    case failure(E)
+}
+
+
+enum WeatherError: Error {
+    case notFound(reason: String) // Data issues
+    case other(reason: String) // Network, Server etc
+}
+
+
 enum WeatherItem : Int {
 
     case icon
@@ -58,7 +70,7 @@ struct WeatherInfo {
     let iconUrl: String
 
 
-    static func fetchWeather(forCity city: String, completion: @escaping (WeatherInfo?) -> Void) {
+    static func fetchWeather(forCity city: String, completion: @escaping (Result<WeatherInfo?, WeatherError>) -> Void) {
 
         var urlComponents = URLComponents(string: "https://api.worldweatheronline.com/free/v1/weather.ashx")!
         urlComponents.queryItems = [
@@ -67,27 +79,52 @@ struct WeatherInfo {
             URLQueryItem(name: "format", value: "json")
         ]
 
-//        print("URL: \(urlComponents.debugDescription)")
 
         guard let url = urlComponents.url else {
             print("Something went wrong with URL formation. \(urlComponents.debugDescription)")
-            return
+            return completion(.failure(.other(reason: "URL is missing")))
         }
 
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
-            let info = WeatherInfo.weatherInfo(fromJsonData: data)
-            DispatchQueue.main.async {
-                completion(info)
+
+            if error != nil {
+                return completion(.failure(.other(reason: error.debugDescription)))
             }
-            
+
+            guard let data = data else {
+                return completion(.failure(.other(reason: "Data is nil.")))
+            }
+
+
+            do {
+                let info = try WeatherInfo.weatherInfo(fromJsonData: data)
+                DispatchQueue.main.async {
+                    completion(.success(info))
+                }
+            }
+            catch WeatherError.notFound(let msg) {
+                DispatchQueue.main.async {
+                    completion(.failure(.notFound(reason: msg)))
+                }
+            }
+            catch WeatherError.other(let msg) {
+                DispatchQueue.main.async {
+                    completion(.failure(.notFound(reason: msg)))
+                }
+            }
+            catch {}
+
         }.resume()
     }
 
-    
-    private static func weatherInfo(fromJsonData jsonData: Data?) -> WeatherInfo? {
+
+    //TODO: try implementing currying here.
+    private static func weatherInfo(fromJsonData jsonData: Data?) throws -> WeatherInfo? {
 
         // get JSON data
         guard let jsonData = jsonData,
@@ -95,8 +132,10 @@ struct WeatherInfo {
             let jsonItems = json as? Dictionary<String, Any>,
             let data = jsonItems["data"] as? Dictionary<String, Any>
             else {
-                return nil
+                throw WeatherError.other(reason: "Either JSON is wrong or data is nil.")
         }
+
+
 
 
         // get currentCondition
@@ -108,11 +147,9 @@ struct WeatherInfo {
                     let msgs = error.first as? Dictionary<String, Any>,
                     let msg = msgs["msg"] as? String
                     else {
-                        return nil
+                        throw WeatherError.other(reason: "Current condition and Error both are nil.")
                 }
-
-                print(msg)
-                return nil
+                throw WeatherError.notFound(reason: msg)
         }
 
 
@@ -121,7 +158,9 @@ struct WeatherInfo {
             let tempCen = info["temp_C"] as? String,
             let tempFer = info["temp_F"] as? String,
             let humid = info["humidity"] as? String
-            else { return nil }
+            else {
+                throw WeatherError.other(reason: "Info is nil.")
+        }
 
 
         // get url

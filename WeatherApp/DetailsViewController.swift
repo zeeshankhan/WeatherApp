@@ -53,14 +53,20 @@ class DetailsViewController: UIViewController {
     func refreshDetails(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
 
-        guard let city = info?.city else {
-            return
-        }
+//        guard let city = info?.city else {
+//            return
+//        }
+//
+//        do {
+//            try WeatherInfo.fetchWeather(forCity: city, completion: { [weak self] (weather) in
+//                self?.info = weather
+//                self?.detailsTableView.reloadData()
+//            })
+//        }
+//        catch {
+//
+//        }
 
-        WeatherInfo.fetchWeather(forCity: city) { [weak self] (weather) in
-            self?.info = weather
-            self?.detailsTableView.reloadData()
-        }
     }
 
     override func didReceiveMemoryWarning() {
