@@ -97,11 +97,11 @@
 				B333817A1DB1121F00D42EE1 /* Main.storyboard */,
 				B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */,
 				B333819F1DB1220000D42EE1 /* WeatherInfo.swift */,
+				B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */,
 				B33381801DB1121F00D42EE1 /* Assets.xcassets */,
 				B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */,
 				B33381851DB1121F00D42EE1 /* Info.plist */,
 				B333817D1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld */,
-				B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";

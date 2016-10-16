@@ -12,6 +12,15 @@ import UIKit
 class DetailsViewController: UIViewController {
 
     var info: WeatherInfo? = nil
+    @IBOutlet weak var detailsTableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Details"
+        detailsTableView.tableFooterView = UIView(frame: .zero)
+        addRefreshControl()
+    }
+
     lazy var tableItems: [TableRowItem] = {
         return self.populateTableItems()
     }()
@@ -31,18 +40,8 @@ class DetailsViewController: UIViewController {
 
         let descItem = InfoRowItem(.weatherDescription)
         items.append(descItem)
-
+        
         return items
-    }
-
-    @IBOutlet weak var detailsTableView: UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "Details"
-        detailsTableView.tableFooterView = UIView(frame: .zero)
-
-        addRefreshControl()
     }
 
     func addRefreshControl() {

@@ -8,15 +8,37 @@
 
 import Foundation
 
-struct History {
+private let key = "WeatherAppSearchHistory"
 
-    private var cities = UserDefaults.standard.array(forKey: "")
+class History {
 
-    mutating func addToHistory(_ city: String) {
+    let cacheCount = 10
+    private var cities = UserDefaults.standard.stringArray(forKey: key)
+
+    
+    @discardableResult func add(_ city: String) -> Bool {
+
+        if cities == nil {
+            cities = [String]()
+        }
+
+        if (cities?.count)! > 0 && cities?[0] == city {
+            return false
+        }
+
+        if cities?.count == cacheCount {
+            cities?.remove(at: cacheCount-1)
+        }
+
         cities?.insert(city, at: 0)
+        UserDefaults.standard.set(cities, forKey: key)
+        return true
     }
 
-    func history() -> [Any] {
-        return []
+    func getAll() -> [String] {
+        if cities == nil {
+            cities = [String]()
+        }
+        return cities! 
     }
 }
