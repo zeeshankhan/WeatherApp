@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3260D871DB483FB00353ED8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3260D851DB483FB00353ED8 /* Realm.framework */; };
+		B3260D881DB483FB00353ED8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3260D861DB483FB00353ED8 /* RealmSwift.framework */; };
+		B3260D901DB4861300353ED8 /* RecentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3260D8F1DB4861300353ED8 /* RecentStore.swift */; };
+		B3260D911DB4861300353ED8 /* RecentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3260D8F1DB4861300353ED8 /* RecentStore.swift */; };
 		B33381771DB1121F00D42EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381761DB1121F00D42EE1 /* AppDelegate.swift */; };
 		B33381791DB1121F00D42EE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381781DB1121F00D42EE1 /* ViewController.swift */; };
 		B333817C1DB1121F00D42EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B333817A1DB1121F00D42EE1 /* Main.storyboard */; };
@@ -35,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3260D851DB483FB00353ED8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		B3260D861DB483FB00353ED8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		B3260D8F1DB4861300353ED8 /* RecentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentStore.swift; sourceTree = "<group>"; };
 		B33381731DB1121F00D42EE1 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33381761DB1121F00D42EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B33381781DB1121F00D42EE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3260D871DB483FB00353ED8 /* Realm.framework in Frameworks */,
+				B3260D881DB483FB00353ED8 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +79,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3260D841DB483FA00353ED8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3260D851DB483FB00353ED8 /* Realm.framework */,
+				B3260D861DB483FB00353ED8 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B333816A1DB1121F00D42EE1 = {
 			isa = PBXGroup;
 			children = (
 				B33381751DB1121F00D42EE1 /* WeatherApp */,
 				B333818D1DB1121F00D42EE1 /* WeatherAppTests */,
 				B33381741DB1121F00D42EE1 /* Products */,
+				B3260D841DB483FA00353ED8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +117,7 @@
 				B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */,
 				B333819F1DB1220000D42EE1 /* WeatherInfo.swift */,
 				B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */,
+				B3260D8F1DB4861300353ED8 /* RecentStore.swift */,
 				B33381801DB1121F00D42EE1 /* Assets.xcassets */,
 				B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */,
 				B33381851DB1121F00D42EE1 /* Info.plist */,
@@ -126,6 +146,7 @@
 				B33381701DB1121F00D42EE1 /* Frameworks */,
 				B33381711DB1121F00D42EE1 /* Resources */,
 				B3260D831DB345D200353ED8 /* ShellScript */,
+				B3260D891DB4842700353ED8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -230,6 +251,21 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
 		};
+		B3260D891DB4842700353ED8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,6 +275,7 @@
 			files = (
 				B333817F1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld in Sources */,
 				B33381791DB1121F00D42EE1 /* ViewController.swift in Sources */,
+				B3260D901DB4861300353ED8 /* RecentStore.swift in Sources */,
 				B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
 				B333819D1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 				B33381771DB1121F00D42EE1 /* AppDelegate.swift in Sources */,
@@ -253,6 +290,7 @@
 			files = (
 				B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
 				B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */,
+				B3260D911DB4861300353ED8 /* RecentStore.swift in Sources */,
 				B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */,
 				B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
 				B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
@@ -385,6 +423,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D4S2X6D6DH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zeeshan.WeatherApp;
@@ -398,6 +440,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D4S2X6D6DH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zeeshan.WeatherApp;
