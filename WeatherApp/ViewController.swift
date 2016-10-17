@@ -46,9 +46,13 @@ class ViewController: UIViewController {
             switch result {
 
                 case .success(let info):
-                    if (self?.history.add(query))! {
-                        self?.listTableView.reloadData()
-                    }
+
+                    self?.history.add(query, completion: { result in
+                        if result == true {
+                            self?.listTableView.reloadData()
+                        }
+                    })
+
                     self?.showDetailsScreen(forWeatherInfo: info!)
 
                 case .failure(let err):

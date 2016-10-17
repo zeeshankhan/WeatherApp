@@ -9,34 +9,52 @@
 import Foundation
 
 private let key = "WeatherAppSearchHistory"
+private let cacheCount = 10
 
 class History {
 
-    let cacheCount = 10
     private var cities = UserDefaults.standard.stringArray(forKey: key)
+    private var queue = DispatchQueue(label: "com.zeeshan.weatherapp.DispatchQueue", attributes: .concurrent)
 
-    
-    @discardableResult func add(_ city: String) -> Bool {
 
-        if cities == nil {
-            cities = [String]()
+    /// Adds the city to history, if not already present
+    func add(_ city: String, completion: @escaping (Bool) -> Void) {
+
+        guard city.characters.count > 0 else {
+            return completion(false)
         }
 
-        if (cities?.count)! > 0 && (cities?.contains(city.lowercased()))! {
-            return false
+        queue.async(flags: .barrier) { [weak self] in
+
+            if self?.cities == nil {
+                self?.cities = [String]()
+            }
+
+            if (self?.cities?.count)! > 0 && (self?.cities?.contains(city.lowercased()))! {
+                return completion(false)
+            }
+
+            if (self?.cities?.count)! == cacheCount {
+                self?.cities?.remove(at: cacheCount-1)
+            }
+
+            self?.cities?.insert(city.lowercased(), at: 0)
+            UserDefaults.standard.set(self?.cities, forKey: key)
+            return completion(true)
+            
         }
 
-        if (cities?.count)! == cacheCount {
-            cities?.remove(at: cacheCount-1)
-        }
 
-        cities?.insert(city.lowercased(), at: 0)
-        UserDefaults.standard.set(cities, forKey: key)
-        return true
     }
 
+
     func getAll() -> [String] {
-        return cities ?? []
+
+        var allCities: [String] = []
+        queue.sync(flags: .barrier) { [weak self] in
+            allCities = self?.cities ?? []
+        }
+        return allCities
     }
 
 }
