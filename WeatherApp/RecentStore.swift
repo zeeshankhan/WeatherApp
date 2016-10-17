@@ -34,7 +34,8 @@ struct Store : Recent {
             return false
         }
 
-        let items = realm.objects(Item.self).filter("city == \(city)")
+        let predicate = NSPredicate(format: "city = %@", city)
+        let items = realm.objects(Item.self).filter(predicate)
         guard items.count == 0 else {
             return false
         }

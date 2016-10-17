@@ -19,12 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
 
-        let store = Store()
-        store.add("a")
-        store.add("b")
-        store.add("c")
-        let all = store.all
-        print(all)
+//        let store = Store()
+//        store.add("a")
+//        store.add("b")
+//        store.add("c")
+//        print(store.all)
+//        store.add("d")
+//        print(store.all)
+//        store.add("e")
+//        store.add("f")
+//        print(store.all)
         return true
     }
 
