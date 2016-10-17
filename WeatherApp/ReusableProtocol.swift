@@ -22,3 +22,22 @@ extension ReusableCell  { // where Self: UIView
 extension UITableViewCell : ReusableCell {}
 
 extension UIViewController : ReusableCell {}
+
+
+protocol StatusBarNetworkActivityIndicator {
+    static var showStatusBarNetworkActivityIndicator: Bool { get set }
+}
+
+extension StatusBarNetworkActivityIndicator {
+
+    static var showStatusBarNetworkActivityIndicator: Bool {
+        get {
+            return UIApplication.shared.isNetworkActivityIndicatorVisible
+        }
+        set {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = newValue
+        }
+    }
+    
+}
+

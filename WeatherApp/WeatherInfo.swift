@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum Result<T, E> {
     case success(T)
@@ -29,6 +28,26 @@ enum WeatherItem : Int {
     case humidity
     case weatherDescription
 
+    func itemValue(_ info: WeatherInfo) -> String {
+        switch(self) {
+        case .icon: return info.iconUrl
+        case .city: return info.city.capitalized
+        case .observationTime: return info.observationTime
+        case .humidity: return info.humidity
+        case .weatherDescription: return info.weatherDesc
+        }
+    }
+
+
+//    static let count: Int = {
+//        var max: Int = 0
+//        while let _ = WeatherItem(rawValue: max) { max += 1 }
+//        return max
+//    }()
+}
+
+extension WeatherItem : CustomStringConvertible {
+
     var description : String {
         get {
             switch(self) {
@@ -40,26 +59,9 @@ enum WeatherItem : Int {
             }
         }
     }
-
-    func itemValue(_ info: WeatherInfo) -> String {
-        switch(self) {
-        case .icon: return info.iconUrl
-        case .city: return info.city.capitalized
-        case .observationTime: return info.observationTime
-        case .humidity: return info.humidity
-        case .weatherDescription: return info.weatherDesc
-        }
-    }
-
-    static let count: Int = {
-        var max: Int = 0
-        while let _ = WeatherItem(rawValue: max) { max += 1 }
-        return max
-    }()
 }
 
-
-struct WeatherInfo {
+struct WeatherInfo : StatusBarNetworkActivityIndicator {
 
     let city: String
     let observationTime: String
@@ -68,7 +70,6 @@ struct WeatherInfo {
     let humidity: String
     let weatherDesc: String
     let iconUrl: String
-
 
     static func fetchWeather(forCity city: String, completion: @escaping (Result<WeatherInfo?, WeatherError>) -> Void) {
 
@@ -85,11 +86,11 @@ struct WeatherInfo {
             return completion(.failure(.other(reason: "URL is missing")))
         }
 
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        WeatherInfo.showStatusBarNetworkActivityIndicator = true
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
 
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            WeatherInfo.showStatusBarNetworkActivityIndicator = false
 
 
             if error != nil {

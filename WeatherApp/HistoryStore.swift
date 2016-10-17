@@ -26,7 +26,7 @@ class History {
             return false
         }
 
-        if cities?.count == cacheCount {
+        if (cities?.count)! == cacheCount {
             cities?.remove(at: cacheCount-1)
         }
 
@@ -36,9 +36,7 @@ class History {
     }
 
     func getAll() -> [String] {
-        if cities == nil {
-            cities = [String]()
-        }
-        return cities! 
+        return cities ?? []
     }
+
 }

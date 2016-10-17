@@ -44,7 +44,7 @@ class DetailsViewController: UIViewController {
         return items
     }
 
-    func addRefreshControl() {
+    private func addRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshDetails(_:)), for: .valueChanged)
         detailsTableView.addSubview(refreshControl)
