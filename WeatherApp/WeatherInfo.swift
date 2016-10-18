@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 enum Result<T, E> {
     case success(T)
@@ -87,11 +88,12 @@ struct WeatherInfo : StatusBarNetworkActivityIndicator {
         }
 
         WeatherInfo.showStatusBarNetworkActivityIndicator = true
+        SVProgressHUD.show(withStatus: "Loading...")
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
 
             WeatherInfo.showStatusBarNetworkActivityIndicator = false
-
+            SVProgressHUD.dismiss()
 
             if error != nil {
                 return completion(.failure(.other(reason: error.debugDescription)))

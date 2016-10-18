@@ -15,15 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
 
-    @IBOutlet weak var msgLabel: UILabel!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Weather App"
         listTableView.tableFooterView = UIView(frame: .zero)
         listTableView.isHidden = hideRecentItems
-        showHUD(false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,10 +34,8 @@ class ViewController: UIViewController {
 
     func weather(forCity query: String) {
         searchBar.resignFirstResponder()
-        showHUD(true);
-        WeatherInfo.fetchWeather(forCity: query) { [weak self] (result) in
 
-           self?.showHUD(false);
+        WeatherInfo.fetchWeather(forCity: query) { [weak self] (result) in
 
             switch result {
 
@@ -73,10 +67,6 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func showHUD(_ shouldShow: Bool) {
-        msgLabel.isHidden = !shouldShow
-        indicator.isHidden = !shouldShow
-    }
 }
 
 extension ViewController : UISearchBarDelegate {

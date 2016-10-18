@@ -26,6 +26,7 @@
 		B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
 		B33E7A921DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
 		B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
+		B3B77A0B1DB5DFAC009E6DC2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B77A0A1DB5DFAC009E6DC2 /* SVProgressHUD.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		B333819F1DB1220000D42EE1 /* WeatherInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		B3B77A0A1DB5DFAC009E6DC2 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B77A0B1DB5DFAC009E6DC2 /* SVProgressHUD.framework in Frameworks */,
 				B3260D871DB483FB00353ED8 /* Realm.framework in Frameworks */,
 				B3260D881DB483FB00353ED8 /* RealmSwift.framework in Frameworks */,
 			);
@@ -82,6 +85,7 @@
 		B3260D841DB483FA00353ED8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3B77A0A1DB5DFAC009E6DC2 /* SVProgressHUD.framework */,
 				B3260D851DB483FB00353ED8 /* Realm.framework */,
 				B3260D861DB483FB00353ED8 /* RealmSwift.framework */,
 			);
@@ -259,6 +263,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 			);
 			outputPaths = (
 			);

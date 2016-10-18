@@ -1,2 +1,3 @@
 # Require version 1.x
 github "realm/realm-cocoa"
+github "SVProgressHUD/SVProgressHUD"
