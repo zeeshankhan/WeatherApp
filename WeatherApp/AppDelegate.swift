@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+
+//        let store = Store()
+//        store.add("a")
+//        store.add("b")
+//        store.add("c")
+//        print(store.all)
+//        store.add("d")
+//        print(store.all)
+//        store.add("e")
+//        store.add("f")
+//        print(store.all)
         return true
     }
 
