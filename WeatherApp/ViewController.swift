@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let history = History()
+    let recent = Store()
     let hideRecentItems = false
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -47,11 +47,9 @@ class ViewController: UIViewController {
 
                 case .success(let info):
 
-                    self?.history.add(query, completion: { result in
-                        if result == true {
-                            self?.listTableView.reloadData()
-                        }
-                    })
+                    if (self?.recent.add(query))! {
+                        self?.listTableView.reloadData()
+                    }
 
                     self?.showDetailsScreen(forWeatherInfo: info!)
 
@@ -98,7 +96,7 @@ extension ViewController : UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 
-        if history.getAll().count > 0 && hideRecentItems {
+        if recent.all.count > 0 && hideRecentItems {
             listTableView.isHidden = false
             listTableView.alpha = 0.0
 
@@ -132,18 +130,18 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return history.getAll().count;
+        return recent.all.count;
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath, cellType: UITableViewCell.self)
-        cell.textLabel?.text = history.getAll()[indexPath.row].capitalized
+        cell.textLabel?.text = recent.all[indexPath.row].city.capitalized
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        weather(forCity: history.getAll()[indexPath.row])
+        weather(forCity: recent.all[indexPath.row].city)
     }
 }
 

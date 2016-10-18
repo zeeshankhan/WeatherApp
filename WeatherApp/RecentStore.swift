@@ -20,7 +20,7 @@ protocol Recent {
 
 struct Store : Recent {
 
-    let cacheCount = 3
+    let cacheCount = 10
     let realm = try! Realm()
     var all: [Item] {
         get {
@@ -34,7 +34,7 @@ struct Store : Recent {
             return false
         }
 
-        let predicate = NSPredicate(format: "city = %@", city)
+        let predicate = NSPredicate(format: "city = %@", city.lowercased())
         let items = realm.objects(Item.self).filter(predicate)
         guard items.count == 0 else {
             return false
@@ -51,7 +51,7 @@ struct Store : Recent {
 
         try! realm.write {
             let item = Item()
-            item.city = city
+            item.city = city.lowercased()
             realm.add(item)
         }
         return true;

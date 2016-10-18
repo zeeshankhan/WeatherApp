@@ -11,6 +11,7 @@ import Foundation
 private let key = "WeatherAppSearchHistory"
 private let cacheCount = 10
 
+@available(*, deprecated, message: "use Recent Store file instead")
 class History {
 
     private var cities = UserDefaults.standard.stringArray(forKey: key)
@@ -48,12 +49,7 @@ class History {
 
 
     func getAll() -> [String] {
-
-        var allCities: [String] = []
-        queue.sync { [weak self] in
-            allCities = self?.cities ?? []
-        }
-        return allCities
+        return cities ?? []
     }
 
 }
