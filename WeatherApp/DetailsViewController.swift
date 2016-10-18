@@ -102,7 +102,7 @@ extension DetailsViewController : UITableViewDataSource, UITableViewDelegate {
         switch rowItem.cellType {
 
             case .image:
-                let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.identifier, for: indexPath) as! ImageTableViewCell
+                let cell = tableView.dequeueReusableCell(indexPath: indexPath, cellType: ImageTableViewCell.self)
                 let valueItem = rowItem as! ImageRowItem
                 cell.cityLabel.text = (info?.tempC)! + "℃ / " + (info?.tempF)! + "℉\n" + valueItem.item.itemValue(info!)
                 cell.populateImage(fromPath: valueItem.image.itemValue(info!))
@@ -110,7 +110,7 @@ extension DetailsViewController : UITableViewDataSource, UITableViewDelegate {
 
 
             case .info:
-                let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
+                let cell = tableView.dequeueReusableCell(indexPath: indexPath, cellType: InfoTableViewCell.self)
                 cell.titleLabel.text = rowItem.item.description
                 cell.detailLabel.text = rowItem.item.itemValue(info!)
                 return cell

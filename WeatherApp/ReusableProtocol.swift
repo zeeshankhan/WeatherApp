@@ -41,3 +41,17 @@ extension StatusBarNetworkActivityIndicator {
     
 }
 
+extension UITableView {
+
+    final func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath, cellType: T.Type = T.self) -> T where T: ReusableCell {
+        guard let cell = self.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? T else {
+            fatalError(
+                "Failed to dequeue a cell with identifier \(cellType.identifier) matching type \(cellType.self). "
+                    + "Check that the reuseIdentifier is set properly in your XIB/Storyboard "
+                    + "and that you registered the cell beforehand"
+            )
+        }
+        return cell
+    }
+}
+
