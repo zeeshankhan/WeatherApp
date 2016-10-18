@@ -14,7 +14,7 @@ private let cacheCount = 10
 class History {
 
     private var cities = UserDefaults.standard.stringArray(forKey: key)
-    private var queue = DispatchQueue(label: "com.zeeshan.weatherapp.DispatchQueue", attributes: .concurrent)
+    private var queue = DispatchQueue(label: "com.zeeshan.weatherapp.DispatchQueue")
 
 
     /// Adds the city to history, if not already present
@@ -44,14 +44,13 @@ class History {
             
         }
 
-
     }
 
 
     func getAll() -> [String] {
 
         var allCities: [String] = []
-        queue.sync(flags: .barrier) { [weak self] in
+        queue.sync { [weak self] in
             allCities = self?.cities ?? []
         }
         return allCities

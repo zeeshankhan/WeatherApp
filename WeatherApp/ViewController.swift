@@ -136,7 +136,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(indexPath: indexPath, cellType: UITableViewCell.self)
         cell.textLabel?.text = history.getAll()[indexPath.row].capitalized
         return cell
     }
