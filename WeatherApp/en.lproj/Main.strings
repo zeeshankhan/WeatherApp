@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "key"; ObjectID = "Cnv-yO-vml"; */
+"Cnv-yO-vml.text" = "key";
+
+/* Class = "UISearchBar"; placeholder = "Enter City Name"; ObjectID = "Pew-M2-TXA"; */
+"Pew-M2-TXA.placeholder" = "Enter City Name";
+
+/* Class = "UISearchBar"; Pew-M2-TXA.scopeButtonTitles[0] = "Title"; ObjectID = "Pew-M2-TXA"; */
+"Pew-M2-TXA.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; Pew-M2-TXA.scopeButtonTitles[1] = "Title"; ObjectID = "Pew-M2-TXA"; */
+"Pew-M2-TXA.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eJu-tO-5JV"; */
+"eJu-tO-5JV.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "eNH-Qv-3DK"; */
+"eNH-Qv-3DK.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rEb-yJ-W6H"; */
+"rEb-yJ-W6H.text" = "Label";

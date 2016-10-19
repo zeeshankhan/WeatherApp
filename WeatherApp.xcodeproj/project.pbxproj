@@ -14,12 +14,10 @@
 		B33381771DB1121F00D42EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381761DB1121F00D42EE1 /* AppDelegate.swift */; };
 		B33381791DB1121F00D42EE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381781DB1121F00D42EE1 /* ViewController.swift */; };
 		B333817C1DB1121F00D42EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B333817A1DB1121F00D42EE1 /* Main.storyboard */; };
-		B333817F1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B333817D1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld */; };
 		B33381811DB1121F00D42EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33381801DB1121F00D42EE1 /* Assets.xcassets */; };
 		B33381841DB1121F00D42EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */; };
 		B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333818E1DB1121F00D42EE1 /* WeatherAppTests.swift */; };
 		B333819A1DB1146700D42EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381991DB1146700D42EE1 /* DetailsViewController.swift */; };
-		B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381991DB1146700D42EE1 /* DetailsViewController.swift */; };
 		B333819D1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */; };
 		B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819C1DB1172100D42EE1 /* ReusableProtocol.swift */; };
 		B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B333819F1DB1220000D42EE1 /* WeatherInfo.swift */; };
@@ -27,6 +25,13 @@
 		B33E7A921DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
 		B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33E7A911DB2A3EE00A8A50D /* HistoryStore.swift */; };
 		B3B77A0B1DB5DFAC009E6DC2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B77A0A1DB5DFAC009E6DC2 /* SVProgressHUD.framework */; };
+		B3B77A171DB661C9009E6DC2 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B77A0A1DB5DFAC009E6DC2 /* SVProgressHUD.framework */; };
+		B3B77A181DB661CF009E6DC2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3260D851DB483FB00353ED8 /* Realm.framework */; };
+		B3B77A191DB661D2009E6DC2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3260D861DB483FB00353ED8 /* RealmSwift.framework */; };
+		B3B77A1A1DB66331009E6DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381761DB1121F00D42EE1 /* AppDelegate.swift */; };
+		B3B77A1B1DB66334009E6DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381781DB1121F00D42EE1 /* ViewController.swift */; };
+		B3B77A1C1DB66336009E6DC2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33381991DB1146700D42EE1 /* DetailsViewController.swift */; };
+		B3B77A1F1DB66346009E6DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B333817A1DB1121F00D42EE1 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +52,6 @@
 		B33381761DB1121F00D42EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B33381781DB1121F00D42EE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B333817B1DB1121F00D42EE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B333817E1DB1121F00D42EE1 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		B33381801DB1121F00D42EE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B33381831DB1121F00D42EE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B33381851DB1121F00D42EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B77A181DB661CF009E6DC2 /* Realm.framework in Frameworks */,
+				B3B77A171DB661C9009E6DC2 /* SVProgressHUD.framework in Frameworks */,
+				B3B77A191DB661D2009E6DC2 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +132,6 @@
 				B33381801DB1121F00D42EE1 /* Assets.xcassets */,
 				B33381821DB1121F00D42EE1 /* LaunchScreen.storyboard */,
 				B33381851DB1121F00D42EE1 /* Info.plist */,
-				B333817D1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B77A1F1DB66346009E6DC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B333817F1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld in Sources */,
 				B33381791DB1121F00D42EE1 /* ViewController.swift in Sources */,
 				B3260D901DB4861300353ED8 /* RecentStore.swift in Sources */,
 				B33381A01DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
@@ -293,11 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B77A1A1DB66331009E6DC2 /* AppDelegate.swift in Sources */,
 				B33381A11DB1220000D42EE1 /* WeatherInfo.swift in Sources */,
 				B333818F1DB1121F00D42EE1 /* WeatherAppTests.swift in Sources */,
+				B3B77A1C1DB66336009E6DC2 /* DetailsViewController.swift in Sources */,
 				B3260D911DB4861300353ED8 /* RecentStore.swift in Sources */,
+				B3B77A1B1DB66334009E6DC2 /* ViewController.swift in Sources */,
 				B33E7A931DB2A3EE00A8A50D /* HistoryStore.swift in Sources */,
-				B333819B1DB1146700D42EE1 /* DetailsViewController.swift in Sources */,
 				B333819E1DB1172100D42EE1 /* ReusableProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +471,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = D4S2X6D6DH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zeeshan.WeatherAppTests;
@@ -478,6 +490,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = D4S2X6D6DH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WeatherAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zeeshan.WeatherAppTests;
@@ -518,19 +534,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B333817D1DB1121F00D42EE1 /* WeatherApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B333817E1DB1121F00D42EE1 /* WeatherApp.xcdatamodel */,
-			);
-			currentVersion = B333817E1DB1121F00D42EE1 /* WeatherApp.xcdatamodel */;
-			path = WeatherApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B333816B1DB1121F00D42EE1 /* Project object */;
 }

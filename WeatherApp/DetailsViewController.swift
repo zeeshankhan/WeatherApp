@@ -176,11 +176,12 @@ class ImageTableViewCell : UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
 
-    func populateImage(fromPath path: String) {
+    func populateImage(fromPath path: String?) {
 
         DispatchQueue.global().async { [weak self] () -> Void in
 
-            guard let url = URL(string: path) else {
+            // wow 🤘🏻
+            guard let url = path.flatMap(URL.init) else {
                 print("Icon URL is nil.")
                 return
             }

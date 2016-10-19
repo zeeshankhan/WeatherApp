@@ -127,11 +127,10 @@ struct WeatherInfo : StatusBarNetworkActivityIndicator {
 
 
     //TODO: try implementing currying here.
-    private static func weatherInfo(fromJsonData jsonData: Data?) throws -> WeatherInfo? {
+    private static func weatherInfo(fromJsonData jsonData: Data) throws -> WeatherInfo? {
 
         // get JSON data
-        guard let jsonData = jsonData,
-            let json = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers),
+        guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers),
             let jsonItems = json as? Dictionary<String, Any>,
             let data = jsonItems["data"] as? Dictionary<String, Any>
             else {
@@ -168,6 +167,12 @@ struct WeatherInfo : StatusBarNetworkActivityIndicator {
         let urls = info["weatherIconUrl"] as? Array<Any>
         let urlDictionary = urls?.first as? Dictionary<String, Any>
         let urlString = urlDictionary?["value"] as? String
+
+        // These are nice :)
+        _ = urlString.flatMap { str in URL(string: str) }
+        _ = urlString.flatMap { URL(string: $0) }
+        _ = urlString.flatMap(URL.init)
+
 
         let descs = info["weatherDesc"] as? Array<Any>
         let descDictionary = descs?.first as? Dictionary<String, Any>

@@ -33,11 +33,15 @@ class WeatherAppTests: XCTestCase {
         }
     }
 
-    func testEnumCountIsEqualToNumberOfItemsInEnum() {
 
-        var max: Int = 0
-        while let _ = CellType(rawValue: max) { max += 1 }
+    func testAddToStore() {
 
-        XCTAssert(max == CellType.count)
+//        let store = Store()
+//        XCTAssert(store.add("one"))
+
+//        let total = store.all.count
+//        XCTAssert(total == 1)
+//        XCTAssertEqual(total, 1)
+//        XCTAssert(store.all.contains("one"))
     }
 }
